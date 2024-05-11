@@ -8,6 +8,7 @@ export default function Sidebar() {
     const [extended, setExtended] = useState(false)
     const {onSent, prevPrompt, setRecentPrompt} = useContext(Context)
 
+    console.log(prevPrompt);
     const loadPrompt = async (prompt)=>{
         setRecentPrompt(prompt)
          await onSent(prompt)
@@ -15,7 +16,7 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <div className="top">
-                <img onClick={() => setExtended(prev => !prev)} className='menu' src={assets.menu_icon} alt="" />
+                <img onClick={() => setExtended(!extended)} className='menu' src={assets.menu_icon} alt="" />
                 <div className="new-chat">
                     <img src={assets.plus_icon} alt="" />
                     {extended ? <p>New Chat</p> : null}
